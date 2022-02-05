@@ -1,0 +1,165 @@
+our first motivating example for the divide and conquer technique
+for designing and analysing efficient algorithms was, ah, merch sort.
+Now we're going to take a look at algorithmic problem
+that seems to have a very different flavour.
+It's a problem in so called computational geometry.
+It's the problem off the closest pair off points.
+So in the closest pair of points problem, the input
+is a collection off, say and points in the plane.
+I know that every such point in a plane can
+be represented by a pair of numbers, one which denotes
+it's X coordinate and the other, which denotes it's y
+co ordinate.
+Now, given such a collection, often points the tusk in
+the closest pair off points.
+Problem is to find a pair among those and points
+a pair of such points, which are nearest to each
+other, according to the Euclidean distance, where Euclidean distance is
+simply the length off the straight line that connects them.
+So here we have an illustration with a collection off
+points in the plane, perhaps, ah, a couple of dozen
+of them.
+And you know, if using your the neural network in
+your brain, you eyeball this collection off points than perhaps
+you will quickly convince yourself that these two points in
+the red circle are indeed a pair among those couple
+dozen points that are nearest to each other.
+Now this algorithmic problem off selecting detecting that two points
+out of a collection off and points that are nearest
+to each other is a very fundamental geometric primitive, and
+it is heavily used in graphics and computer vision.
+More recently, in geographic so called geographic information systems that
+ah ah involve a lot off mapping applications in various
+areas ofthe industry and entertainment.
+Ah, but also thinks like molecular modelling.
+Air traffic control just imagined the problem off traffic controller
+who has a collection off moving dots which represents playing
+on them up.
+And ah has to decide where to attract their attention,
+where their attention ah, is most needed.
+Well, ah, it's quite reasonable to think that an air
+traffic controller should pay most attention to ah, the two
+planes that in years to each other and make sure
+that they don't they're not on the course to crush
+Um, On the other hand, this problem off the closest
+pair of points has attracted a lot of attention and
+design ofthe other algorithms for various algorithmic various geometric problems.
+And one reason for it is that, as we're going
+to see, ah, this IHSAA problem, which can be solved
+surprisingly efficiently.
+And the sufficient solution of the closest pair of point
+problem has inspired other efficient computational algorithmic techniques for problems
+such as the nearest neighbour Euclidean minimum spanning tree Vora
+noise, so called paranoid diagrams and many others.
+So how can we solve the closest pair of points
+problem?
+Well, we can, of course, consider a brute force approach,
+which in the case off many algorithmic problems, leads to
+really impractical algorithms, namely exponential time algorithms.
+But in the case of the closest pair of points
+problem, it's not that bad after all, because all we
+need to do and it's really a straightforward brute force
+approach is tau.
+Consider every pair off two points.
+How many such pairs are there?
+Well, there are most critically, many of them.
+And for each pair, let's say we calculate the distance
+of those two points.
+How can we calculate the distance of the two points?
+Well, you can use that Ah, by tigers theorem, for
+example, or simply take the some ofthe squares off the
+differences of their X and Y coordinates on.
+Hence, obtain a measure of the distance between the two
+points.
+Now let's maybe consider a simpler version off the problem.
+Let's consider one dimensional version ofthe the closest pair of
+points problem.
+What is it?
+Ah, what?
+What is this problem?
+Well, um ah.
+One dimensional version of the closest pair of points problem
+is simply tow given a collection off points on a
+line instead of a plane and that can be represented
+simply by numbers.
+Tto find pair off two numbers which are which differ
+from each other by the smallest possible amount.
+Well, there is actually an easy linear with make.
+Augur them for solving this close spare of points problem
+on the line, which is simply to sort them that
+takes the nearest make time and then Goethe through this
+sorted list from the smallest number two, the largest, and
+measure the distances between each pair off consecutive numbers.
+Now the smallest gap, the smallest ah, difference between ah,
+two consecutive numbers will be clearly ah, the closest pair
+of points.
+So there is an efficient, very efficient solution which beats
+hands down the trivial brute force.
+Quadratic solution.
+Now, for the sake ofthe simplicity and clarity but without
+losing too much immorality.
+Ah, we are going to make this known the generously
+assumption, which is simply that there are no two points
+in our collection off points on the plane in the
+two diversion which have the same x coordinate.
+So how can we go about ah trying to solve
+the closest pair of points problem in two D faster
+than the trivial brute force quadratic algorithm?
+So we have seen a success in the case off
+one D version where we hold the points are on
+the line.
+Um, so perhaps it may be, ah, sensible first step
+to sort all the ah points in our collection off
+points in the plane, first by their ex coordinates and
+then by their white co ordinates and maybe consider ah,
+the points that are nearest to each other with respect
+to the X coordinates those that in years to each
+other among the y coordinates.
+And perhaps this is how we're going to identify the
+pair of points which are as close to each other
+as possible.
+That solution doesn't quite work.
+And here is one example which should, um, illustrate why
+so well know that if we sort so here is
+a collection off about 11 points.
+Um, and again, if you eyeball it, you will.
+Your neural network and your brain will quickly conclude that
+most probably this is the pair of points which are
+nearest to each other.
+Now, however, note that if you sort all these 11
+points by their ex coordinates, these two points which are
+really the closest to each other in terms ofthe there
+Euclidean distance on the plane are quite far apart in
+the order ofthe X coordinates.
+Because all of these points on this diagonal ah, support
+a port trending line.
+Um, sit between.
+Likewise, these two points are quite far apart from each
+other on the list, off points that are sorted by
+the y coordinate.
+Because all of these points also sit between them, and
+they're quite a few.
+So this doesn't seem tto Ah, necessarily immediately yield an
+efficient solution.
+So let's try another attempt.
+So we have seen a success off the divide and
+conquer technique.
+Ah, for sorting, wherein the natural approach was to divide
+the input into two more or less equal parts or
+to house um and then ah, and then perhaps run
+some Ah, around the algorithm recursive lee on each of
+the two parts.
+Now, of course, here we have a two D pictures
+of perhaps it might be more natural toe to divide
+the hour cloud off points into quadrants.
+Um, and perhaps, um, ideally, the quadrants should have ah,
+more or less similar numbers off points in each of
+them.
+So this is an idealised picture that you like to
+see.
+But if you think about it for a few minutes,
+you will realise that it may simply be impossible.
+Toe divide the points.
+The end points into quadrants in such a way that
+each quadrant has more or less the same number of
+points.

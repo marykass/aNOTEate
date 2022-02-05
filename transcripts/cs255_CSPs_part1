@@ -1,0 +1,314 @@
+in this section, we're going to have a look at constraint
+satisfaction problems.
+So these are problems where the goal state is defined
+in terms of a particular set of constraints and you're
+looking for a solution that satisfies those constraints.
+So we'll start by defining different types of constraint satisfaction,
+problem and then in the remainder of this video we'll
+look at the backtracking.
+Search algorithm for solving CSPs.
+And then in the following video we'll look at more
+advanced algorithms where you use the structure of the constraint
+graph to try and improve search.
+So a constraint satisfaction problem is where you have a set
+of variables.
+So let's call them v 1 to v n and each
+variable V
+i has an associated domain D v i of possible
+values and what you're looking for is assignments of values
+to variables that satisfy some set of hard constraints on
+subsets of the variables.
+So constraint, satisfaction problems or C S P s are
+often used as a way of characterising an optimisation problem.
+So we might have a function that gives
+us a cost for each assignment of values to variables and
+what we're trying to do is to minimise that
+cost while meeting whatever constraints might exist in the environment.
+a Constraint satisfaction problem is defined both in terms of the
+constraints but also in terms of what the variables look
+like.
+So we might have variables that have finite domains.
+And so if we have n variables, each of which
+has domain size D then there's order D to the
+n complete assignments.
+we might have infinite domains.
+So you might think of the start and end of lecture
+and seminar times as being essentially infinite.
+In other words, you can't enumerate all
+the possible assignments and so there we would need a constraint
+language for expressing our constraints.
+So, for example, you might say that a seminar for a
+lecture has to come after the lecture itself, and then
+we might have continuous variables.
+So where we have truly continuous domains. Now in general linear constraints
+are often solvable.
+Either directly, or using linear programming, but non linear constraints
+are essentially undecidable.
+In terms of the constraints, we might have constraints that
+only involve a single variable.
+So we might say that some variable can't take the
+value green, for example, we might have binary constraints.
+So saying that two variables might not take the same value
+or we might have higher order constraints that involve three
+or more variables, we can also have what are called
+soft constraints or preferences.
+So these are not hard constraints, but these are things
+that we might have a cost associated with.
+So we might say that a five past 10 start
+for a lecture is better than a five past eight.
+start, for example. As an example of what the higher
+order constraints look like.
+Think of this problem.
+So on the left hand side, you're given a problem
+where you have letters that you have to assign Digits
+to.
+integer values to, in such a way that this sum
+works.
+Okay, so O plus O gives you R perhaps with a
+remainder.
+We can represent that using the constraint graph on the
+right hand side.
+So in the constraint graph, the circles represent the variables.
+So we have a circle for each of the letters
+in our problem.
+We also have circles for the possible remainders.
+And then the boxes represent the constraints.
+So if you look at the right hand side of
+the constraint graph.
+We have a constraint that involves the variable O
+the variables R and X1.
+So that constraint is representing that R is equal to
+O plus O, but there might be some remainder and
+we'll use X1 to represent the remainder.
+So in this problem, we got our variables.
+The domains were going to say are integer values let's say they're
+between zero and nine, and then we have a set
+of constraints.
+So suppose our constraints might be that we have to
+assign a different value to each of our variables and then
+the constraints that O plus O is R plus 10 times
+x one and so on for the other values.
+Another example of constraint problem, constraint
+satisfaction problem is something like the n-queens example.
+This is quite often used as an illustrative CSP.
+So the idea is to find a configuration of a
+chess board that places n Queens on an N by
+n board. n-Queens
+can be quite an illustrative example of how effective
+an algorithm is, or particularly how effective techniques for improving.
+Algorithms are because you can look at the size of
+n Queens problem that is effectively solvable.
+another kind of constraint
+Satisfaction problem is something like a crossword puzzle.
+So here you have a set of locations into which
+you have to insert words in such a way that
+where you have a horizontal and a vertical overlapping, they contain
+the same letter.
+From the different words. We might also have something like
+a scheduling problem.
+And actually, this is one of the main examples of
+where C.
+S.
+P S gets used, where we have a number of
+activities that we might want to perform and that corresponds
+to each of the variables.
+And then those variables have domains that specify the possible start
+times of the activities.
+And then we have some constraints.
+So some activities may have to occur before or after
+others or at the same time as others. And some
+of them may not be allowed to start at particular
+times, and so we can describe our problem our scheduling
+problem in the form of a CSP.
+So CSPs seem like quite an abstract idea, but they're
+fairly broadly used for things like scheduling.
+They're also used for some kind of configuration problems where
+you have to sort of place components
+in particular locations, and those locations are dependent on where
+you've placed other components and your preference might be that.
+Things are laid out such that things are a close to
+other components as possible.
+So how do you solve a CSP?
+Well, the simplest possible approach is called the generate and test
+algorithm.
+The idea is that you just generate the assignment space.
+So our assignment Space.
+D is the set of all possible assignments.
+Okay, so it's of size Dv1 multiplied by
+Dv2 and so on and so forth.
+And you look at all possible combinations and the idea
+is that you generate all possible combinations and then you
+test these assignments with constraints that you have So in
+the scheduling activities problem from a few slides ago, the
+domain of.
+A is 1234 the domain of B is 1234 and so on.
+All way up to E and so we can generate
+all possible assignments.
+So we have 11111, 11112 and so on.
+All the way up to 44444 So it should be
+obvious that you're going to generate a huge number of
+assignments that you have to test.
+And so if you've n variables, each of which
+has a domain of size D, then our assignment Space. Our capital
+D has d to the n elements in it.
+So algorithms for C.
+S.
+P s are really about trying to cut down the
+size of this assignment space and make sure that we
+only have to look at the most promising areas within
+that space.
+And the simplest of the kind of real world algorithms
+and the algorithm on which others are based is
+a backtracking approach.
+So the idea is that we're going to systematically explore
+D our assignment space by instantiating the variables one
+at a time.
+And we can evaluate each constraint once all of the
+variables that involve that constraint are bound. And any partial assignment
+that doesn't satisfy the constraint can be pruned.
+So if you think about our scheduling activities problem, we
+have the constraint that A can't start at the same
+time as B.
+So as soon as we have a partial instantiation
+of A to 1 B to one, and it doesn't matter what
+C and D are We know that that's inconsistent with the constraint. Ok, so
+we can prune the search and.
+Backtrack. Now because we're talking about a CSP.
+There are some properties that are kind of interesting and are different
+to the search algorithms.
+We looked at previously. So first thing to note is that, we know
+the depth of every solution.
+Okay, so every solution will appear depth n because we've got to assign
+a value to each of our N variables.
+This means we can use a depth first search.
+Okay, so we get the reduction in space that comes
+from using a depth search.
+The path is also irrelevant, all we care about is
+what is the assignment?
+We don't care in what order we made that assignment.
+And so we can use complete state information. And our
+branching factor.
+is gonna be n minus l multiplied by D at
+depth l.
+Okay, so the top level branching factor, we have n
+different variables we can choose from and each of them
+can take any of the D values that are in
+their domain. At the next level down.
+We have n minus one variables left also having a
+domain of size d. And we can make use of this
+property in some of the heuristics we'll use for
+C.
+S.
+P s.
+It doesn't matter what order we make our assignments, right?
+So, assigning an AI lecture to start at five past
+10 and algorithms at five past 11 is exactly the same,
+it's equivalent to saying Let's assign algorithms to five past
+11 followed by AI at five past 10.
+And this means we only need to consider assignments to
+an individual variable at each of our nodes.
+So the back tracking algorithm, this idea of making our assignments,
+checking the constraints where we've assigned to all of the
+variables that are involved in that constraint and backtracking if we've
+violated the constraints, this is the basic uninformed algorithm for
+C.
+S.
+P s.
+And to give you an indication of how effective it is
+we can solve n queens for around about
+n equals 25.
+So the algorithm is fairly simple.
+So it's a recursive algorithm, so it takes an assignment
+and it takes a description of the CSP.
+Okay, so the backtracking search takes a CSP description,
+and then it uses this recursive backtracking function that starts
+with the empty assignment and a description of the problem
+and each time round you check to see whether your
+assignment is complete.
+If it is, you've solved the problem, and that's what
+you return.
+Otherwise, you select one of the unassigned variables in the
+problem, and then, for each of your possible values in
+the domain, you pick that value you check to see
+whether it's consistent with the constraints.
+If it is, you make that assignment and
+the recursive function again.
+Otherwise, you remove the assignment of that value to the
+variable from the set of assignments and .
+You then backtrack.
+So it's a really simple algorithm.
+As I say it can solve n queens for around and equals 25.
+Now it turns out there are some general purpose techniques
+or heuristics, but no longer heuristics about the particular problem.
+These general purpose, heuristics that can give us significant
+gains in speed.
+And There's a number of questions we can think about,
+right?
+So the first two are pretty obvious So which variable
+should we assign next.
+and what order should we try its values?
+We'll, look at techniques to do that in a moment.
+In this video, we can also think about can you
+detect inevitable failures early on and can you
+take advantage of the structure of the problem?
+and we'll also look at techniques in the next video for
+How we do this.
+So we're gonna look in a moment at some heuristics
+MRV.
+and degree heuristic and LCV, which answer those
+first two questions and then in the following video we'll
+look at consistency algorithms and using the problem structure
+particularly.
+we'll look at cut set conditioning and variable elimination.
+So in the last bit of this video, let's look
+at some of these simple general purpose heuristics.
+So the first of those is called M R.
+V stands for minimum remaining values and.
+The idea here is that we will choose the variable
+that has the fewest legal values remaining
+Okay, this heuristic also gets called the Fail First heuristic,
+which tells you what it's gonna do, right.
+So picks the variable that is most likely to cause
+a failure.
+So if there's a variable, has zero possible assignments left
+you'll pick it and you'll, okay?
+And that the reason that's useful is it triggers the
+backtracking.
+as soon as you possibly can.
+Okay.
+The second heuristic is called degree heuristic and.
+We use this as a tiebreaker when you have,
+equal variables in terms of their minimum remaining values.
+So here we choose the variable that has the most
+constraints on the remaining variables.
+So if you think back to our constraint graph where
+we used circles denote variables and boxes to denote
+constraints, the degree heuristic is saying, pick the variable that
+is connected to the highest number of constraints. And the
+idea.
+with doing that.
+is you will reduce the branching factor further down in
+the search. then our final heuristic of the .
+Three simple heuristics is least constraining value.
+And here the aim is that once you've got variable
+that you're going to choose a value for you choose
+the value that least constrains the assignments that you gonna
+make later on.
+So it's the one that rules out the fewest values
+in the remaining variables.
+And if you take these three pretty simple heuristics, you
+can, go from solving n queens for n equals around
+25 with basic backtracking, search to n is around 1000.
+So you get a significant speed up from these very
+simple additional checks.
+So in this video So far.
+What we're doing is we're introduced the kinds of C.
+S.
+P s that exist and how the nature of
+the domains and the nature of the constraints impacts.
+on the problem itself and
+We've introduced this backtracking search and some simple heuristics.
+What we'll look at next is using arc consistency to
+try and detect failure early and, then we'll look at
+some other ways of trying to improve the efficiency of the
+search.
