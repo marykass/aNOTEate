@@ -1,0 +1,144 @@
+CS262 Logic and Verification Lecture 1: Introduction
+Dr. Torsten Mu¨tze torsten.mutze@warwick.ac.uk
+2021/22 Term 2
+
+Dr. Torsten Mu¨tze torsten.mutze@warwick.ac.uk 20C21S/2262 TLeorgmic 2and Verification
+
+Lecture 1
+
+1 / 13
+
+Your expectations
+What comes to your mind when you hear the words `Logic' and `Verification' ?
+
+Dr. Torsten Mu¨tze torsten.mutze@warwick.ac.uk 20C21S/2262 TLeorgmic 2and Verification
+
+Lecture 1
+
+2 / 13
+
+Outline
+We will cover the following topics: the foundations of reasoning about systems and programs: induction/recursion the syntax and semantics of propositional logic and first order predicate logic proof systems: semantic tableaux, resolution, natural deduction automate theorem proving; learn a logic programming language: Prolog Boolean satisfiability: combinatorics, SAT solving formal systems for program verification: Hoare logic
+
+Dr. Torsten Mu¨tze torsten.mutze@warwick.ac.uk 20C21S/2262 TLeorgmic 2and Verification
+
+Lecture 1
+
+3 / 13
+
+What is logic?
+logic is the study of correct reasoning (philosophy, mathematics) mathematical logic: captures reasoning in fully formal system there are many different reasoning systems four pillars of mathematical logic: set theory, model theory, proof theory, recursion theory connections: CS132 Computer Organisation & Architecture (logic gates), CS130 Mathematics for Computer Scientists 1 (foundations)
+
+Dr. Torsten Mu¨tze torsten.mutze@warwick.ac.uk 20C21S/2262 TLeorgmic 2and Verification
+
+Lecture 1
+
+4 / 13
+
+What has logic ever done for us?
+Logic is not just in the background - it is fundamental complexity: limits of computation/mathematical reasoning computability: Turing machines and -calculus databases: SQL syntactic variant of first order logic digital circuits: Boolean logic gates reasoning about knowledge: AI, Machine Learning, Game Theory logic and functional programming languages: Prolog hardware/software verification: proof and model checking
+
+Dr. Torsten Mu¨tze torsten.mutze@warwick.ac.uk 20C21S/2262 TLeorgmic 2and Verification
+
+Lecture 1
+
+5 / 13
+
+Example of logical reasoning
+The politician's fallacy 1 to improve things we have to make changes 2 our policy is changing things 3 therefore we are improving things
+What make us believe someone's argument?
+
+Dr. Torsten Mu¨tze torsten.mutze@warwick.ac.uk 20C21S/2262 TLeorgmic 2and Verification
+
+Lecture 1
+
+6 / 13
+
+History
+Capturing "correct reasoning" has been around for many centuries
+Major premise All men are mortal Minor premise Socrates is a man Conclusion Socrates is mortal
+Aristotle: 384-322 BC Syllogism: "Something different from the things supposed results of necessity because these things are so." Aristotle, Prior Analytics Very important idea: logical form rather than content
+
+Dr. Torsten Mu¨tze torsten.mutze@warwick.ac.uk 20C21S/2262 TLeorgmic 2and Verification
+
+Lecture 1
+
+7 / 13
+
+Induction and recursion
+
+Induction: Build a bigger structure from its constituents / proof technique
+Example: arithmetic terms variables x, y , z, . . . sums/products of terms ((X + Y ) · Z )
+
+Theorem
+number of opening parenthesis = number of closing parenthesis
+
+Recursion: Decompose a bigger structure into its constituents / programming technique
+
+Program to count the number of parenthesis: f(x)=0 // x is a variable
+f((X+Y))=f(X)+f(Y)+2 // X and Y are arithmetic terms
+f((X*Y))=f(X)+f(Y)+2 // X and Y are arithmetic terms
+
+Dr. Torsten Mu¨tze torsten.mutze@warwick.ac.uk 20C21S/2262 TLeorgmic 2and Verification
+
+Lecture 1
+
+8 / 13
+
+Syntax and semantics
+Syntax: Formal specification of a language (often by induction)
+Example: arithmetic 1, s(1), s(s(1)), +/×, x s(1) + s(s(1)) = s(s(s(s(1)))), s(1) > 1, (x)(x + 1 = s(1)), (x)(x + 1 = s(1))
+Semantics: Meaning of the formal symbols in a particular context domain of variables/quantifiers (natural numbers?) formal language needs interpretation in a particular model truth/falseness depends on the model
+
+Dr. Torsten Mu¨tze torsten.mutze@warwick.ac.uk 20C21S/2262 TLeorgmic 2and Verification
+
+Lecture 1
+
+9 / 13
+
+Organisational stuff
+all information on Moodle page (slides, videos, literature, Prolog links, past exams etc.): https://moodle.warwick.ac.uk/course/view.php?id=46354 online events (lectures, seminars, labs) via Microsoft Teams
+ ask questions (me and yourself) discussion forum on
+Moodle/Teams chat don't just absorb, but do the course material
+
+Dr. Torsten Mu¨tze torsten.mutze@warwick.ac.uk 20C21S/2262 TLeorgmic 2and Verification
+
+Lecture 1
+
+10 / 13
+
+Organisational stuff
+Lectures: weeks 1-10 Seminars: weeks 1-7 weekly exercise sheets Labs: weeks 8-10 weekly lab sheets do the exercises and labs! do the exercises and labs! do the exercises and labs!
+
+Dr. Torsten Mu¨tze torsten.mutze@warwick.ac.uk 20C21S/2262 TLeorgmic 2and Verification
+
+Lecture 1
+
+11 / 13
+
+Assessment
+
+Class test worth 10% Tue, Feb 15 (week 6), online via Moodle
+
+Lab work May xx
+
+worth 15%
+
+Exam worth 75% covers all aspects of the course; most likely f2f
+
+Dr. Torsten Mu¨tze torsten.mutze@warwick.ac.uk 20C21S/2262 TLeorgmic 2and Verification
+
+Lecture 1
+
+12 / 13
+
+Literature
+Melvin Fitting, First-order logic and automated theorem proving, Springer. Particularly relevant for Prolog exercises/labs. Donald Knuth, The art of computer programming vol. 4A, Addison Wesley. particularly relevant for Boolean basics and satisfiability. Preprint: http://www.cs.utsa.edu/~wagner/knuth/
+
+Dr. Torsten Mu¨tze torsten.mutze@warwick.ac.uk 20C21S/2262 TLeorgmic 2and Verification
+
+Lecture 1
+
+13 / 13
+
+
