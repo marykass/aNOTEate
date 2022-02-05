@@ -1,0 +1,73 @@
+<html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<style>
+body {
+  font: 400 15px Lato, sans-serif;
+  line-height: 1.8;
+  color: #818181;
+}
+h2 {
+  font-size: 50px;
+  text-transform: uppercase;
+  color: #303030;
+  font-weight: 600;
+  margin-bottom: 30px;
+}
+h4 {
+  font-size: 19px;
+  line-height: 1.375em;
+  color: #303030;
+  font-weight: 400;
+  margin-bottom: 30px;
+}
+.jumbotron {
+  background-color: #9aceff;
+  color: #fff;
+  padding: 100px 25px;
+  font-family: Montserrat, sans-serif;
+}
+
+textarea {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+hr.new {
+  border: 5px solid white;
+  border-radius: 3px;
+}
+
+</style>
+</head>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+
+<div class="jumbotron text-center" style= "background-color:blue;">
+
+<h1>aNOTEate</h1>
+<hr class = "new">
+<p>{{text}}</p>
+<h2>{{output}}</h2>
+<hr class = "new">
+
+<p>Transcript text:</p>
+<form action = "/transcriptProcessing/" method = "POST">
+        <!--<input type="text" class="form-control" style = "height: 150px;"  placeholder="News article" required>-->
+    <textarea name="transcript" cols="80" rows="10" style = "color:blue;"></textarea>
+
+  <p><br><br><button type="submit" class="btn btn-danger" style= "font-size:25px; background-color: #DCAE96; border-color: white">aNOTEate!</button> </p>
+
+  <a class="btn btn-primary btn-lg" href="/onenote-demo" role="button">OneNote Demo</a>
+</form>
+</div>
+
+</script>
+</body>
+</html>
