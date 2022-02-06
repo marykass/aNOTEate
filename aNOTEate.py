@@ -20,7 +20,7 @@ def my_form_post():
 
     bulletPoints = ""
     for sentence in keyPhrases:
-        bulletPoints = bulletPoints + "<li>" + sentence + "</li>"
+        bulletPoints = bulletPoints + "<li>" + sentence + "</li> + <br>"
     bulletPoints = Markup(bulletPoints)
     return render_template('transcriptProcessing.html', text = "Here are the key phrases... ", output = bulletPoints, len = len(keyPhrases),image = 'newCSP.jpg')
 
