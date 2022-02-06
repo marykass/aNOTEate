@@ -1,4 +1,4 @@
-# ichack22
+# aNOTEate
 ## Inspiration
 Three lazy CS student wanted to further optimise note taking in lectures. So we created an automated lecture slide annotator.
 ## What it does
