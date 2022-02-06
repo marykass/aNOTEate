@@ -54,17 +54,17 @@ hr.new {
 <h1>aNOTEate</h1>
 <hr class = "new">
   <p>{{text}}</p>
-  <h2>{{output}}</h2>
 <hr class = "new">
 
-<p>Transcript text</p>
-<form action = "/transcriptProcessing/" method = "POST">
-        <!--<input type="text" class="form-control" style = "height: 150px;"  placeholder="News article" required>-->
-    <textarea name="transcript" cols="80" rows="10" style = "color:blue;"></textarea>
 
-  <p><br><br><button type="submit" class="btn btn-danger">aNOTEate</button> </p>
+<ul style="text-align:left; width: 33%; float: right;">
+ {{output}}
+</ul style="text-align:left; width: 33%; float: right;">
 
-</form>
+
+
+<img src="{{url_for('static', filename='newCSP.jpg')}}" width = "700px" height = "1700px"/>
+
 </div>
 
 </script>

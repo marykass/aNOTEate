@@ -1,7 +1,7 @@
 from flask import Flask, request, render_template, Markup
 from gensim.summarization.summarizer import summarize
 from gensim.summarization import keywords
-import re
+#import re
 
 
 app = Flask(__name__)
@@ -18,9 +18,11 @@ def my_form_post():
     keyPhrases = summarize(inputtext, split=True, ratio=0.1)
     #print(summarize(text1, split=True, ratio=0.5))
 
-    #for sentence in keyPhrases:
-    #    print(sentence)
-    return render_template('homePage.html', text = "Here are the key phrases... ", output = keyPhrases)
+    bulletPoints = ""
+    for sentence in keyPhrases:
+        bulletPoints = bulletPoints + "<li>" + sentence + "</li>"
+    bulletPoints = Markup(bulletPoints)
+    return render_template('transcriptProcessing.html', text = "Here are the key phrases... ", output = bulletPoints, len = len(keyPhrases),image = 'newCSP.jpg')
 
 if __name__ == '__main__':
     app.run(debug=True)
